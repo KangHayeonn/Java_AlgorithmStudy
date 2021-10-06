@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.HashSet;
 
 /*
- * HashSet 중복된 객체를 허용하지 안함
+ * HashSet 중복된 객체를 허용안함
  */
 public class BOJ_11478 {
 
