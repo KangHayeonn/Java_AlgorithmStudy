@@ -43,7 +43,7 @@ public class BOJ_19583 {
 			
 			if(time >= end && time <= q) {
 				if(h.contains(name)) {
-                    h.remove(name);
+                    			h.remove(name);
 					cnt++;
 				}
 			}
