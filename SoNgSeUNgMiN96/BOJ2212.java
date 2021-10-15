@@ -19,7 +19,6 @@ public class BOJ2212 {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         N = Integer.parseInt(br.readLine());
         K = Integer.parseInt(br.readLine());
-        pick = new int[K];
         temp = new String[N];
         temp = br.readLine().split(" ");
 
