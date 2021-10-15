@@ -35,38 +35,27 @@ public class BOJ2212 {
             station[i++] = map1.get(key);
         }
 
-        Arrays.sort(station, new Comparator<Integer>() {
+        Arrays.sort(station, new Comparator<Integer>() {        //우선 좌표를 정렬
             @Override
             public int compare(Integer a, Integer b) {
                 return a-b;
             }
         });
 
-        for (i=0;i<size-1; i++){
+        for (i=0;i<size-1; i++){    //dis 의 배열에 각 좌표간 거리차를 저장
             dis[i] = station[i+1] - station[i];
         }
-        Arrays.sort(dis, new Comparator<Integer>() {
+        Arrays.sort(dis, new Comparator<Integer>() {    //좌표간 거리차 정렬
             @Override
             public int compare(Integer a, Integer b) {
                 return a-b;
             }
         });
 
-        for(i=0;i<size-K;i++){
+        for(i=0;i<size-K;i++){  //가장 큰 구간 (집중국수-1)개를 잘라내주고 그것보다 작은것들만 출력한다.
             sum+=dis[i];
         }
         System.out.print(sum);
 
     }
 }
-
-
-
-/*
-예제 입력 :
-6
-2
-1 6 9 3 6 7
-
-예제 출력 : 5
- */
