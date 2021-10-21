@@ -35,11 +35,7 @@ public class BOJ1759 {
                     con++;
             }
             if(con>=2&&vow>=1) {
-                char temp[] = new char[p];
-
-                for(int i=0;i<p;i++)
-                    temp[i]= pick[i];
-                System.out.println(temp);
+                System.out.println(pick);
             }
             return;
         }
