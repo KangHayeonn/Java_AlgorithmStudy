@@ -7,27 +7,27 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /*
- * µµ¿µÀÌ°¡ ¸¸µç ¸ÀÀÖ´Â À½½Ä
+ * ë„ì˜ì´ê°€ ë§Œë“  ë§›ìˆëŠ” ìŒì‹
  * https://www.acmicpc.net/problem/2961
  * 
- * Àç·á N°³
- * ½Å¸À S		¾´¸À B
- * ½Å¸ÀÀº °ö*
- * ¾´¸ÀÀº ÇÕ+
- * 	--> ½Å¸À ¾´¸À Â÷ÀÌ Àûµµ·Ï 
+ * ì¬ë£Œ Nê°œ
+ * ì‹ ë§› S		ì“´ë§› B
+ * ì‹ ë§›ì€ ê³±*
+ * ì“´ë§›ì€ í•©+
+ * 	--> ì‹ ë§› ì“´ë§› ì°¨ì´ ì ë„ë¡ 
  * 
- * Á¶°Ç )
- * 		N°³ Áß, ÃÖ¼Ò 1°³ ÀÌ»ó ~ N°³ ÀÌÇÏ 
- * 		½Å¸À, ¾´¸À Â÷ÀÌ ÃÖ¼ÒµÇµµ·Ï --> diff º¯¼ö¿¡ ÀúÀå --> diff ¹İÈ¯ 
+ * ì¡°ê±´ )
+ * 		Nê°œ ì¤‘, ìµœì†Œ 1ê°œ ì´ìƒ ~ Nê°œ ì´í•˜ 
+ * 		ì‹ ë§›, ì“´ë§› ì°¨ì´ ìµœì†Œë˜ë„ë¡ --> diff ë³€ìˆ˜ì— ì €ì¥ --> diff ë°˜í™˜ 
  * 
- * Á¢±Ù¹ı )
- * 		¼ø¼± Áß¿ä x ==> Á¶ÇÕ Combination  (Áßº¹x)		
- * 		¹è¿­ 2°³ ¸¸µé±â ½Å¸À sour  ¾´ bitter
- * 		°íÁ¤µÈ »Ì±â °³¼ö x  --> main¿¡¼­ ¹İº¹¹® ÅëÇØ µ¹·ÁÁÖ±â 
- * 		diff °ª ºñ±³		
+ * ì ‘ê·¼ë²• )
+ * 		ìˆœì„  ì¤‘ìš” x ==> ì¡°í•© Combination  (ì¤‘ë³µx)		
+ * 		ë°°ì—´ 2ê°œ ë§Œë“¤ê¸° ì‹ ë§› sour  ì“´ bitter
+ * 		ê³ ì •ëœ ë½‘ê¸° ê°œìˆ˜ x  --> mainì—ì„œ ë°˜ë³µë¬¸ í†µí•´ ëŒë ¤ì£¼ê¸° 
+ * 		diff ê°’ ë¹„êµ		
  */
 public class BOJ_2961 {
-	static int min_diff = Integer.MAX_VALUE;		// m°³ÀÇ Àç·á ÀÌ¿ëÇØ ¸¸µç ¿ä¸®ÀÇ ½Å¸À°ú ¾´¸À Â÷ÀÌ°¡ ÃÖ¼ÒÀÏ ¶§
+	static int min_diff = Integer.MAX_VALUE;		// mê°œì˜ ì¬ë£Œ ì´ìš©í•´ ë§Œë“  ìš”ë¦¬ì˜ ì‹ ë§›ê³¼ ì“´ë§› ì°¨ì´ê°€ ìµœì†Œì¼ ë•Œ
 	public static int cal (int[] s, int[] b, int[] a) {
 		int s_cnt = 1; int b_cnt = 0;
 		for(int i = 0; i < a.length; i++) {		
@@ -38,7 +38,7 @@ public class BOJ_2961 {
 		return Math.abs(s_cnt - b_cnt);
 	}
 	
-	public static void combination(int[] s, int[] b, int[] answer, int n, int m, boolean[] check, int idx, int dep) {
+	public static void combination(int[] s, int[] b, int[] answer, int n, int m, int idx, int dep) {
 		
 		if(dep == m) {
 			int diff = cal(s, b, answer);
@@ -51,9 +51,9 @@ public class BOJ_2961 {
 			return;
 		}
 		answer[dep] = idx;
-		//´ÙÀ½ ´Ü°è·Î ÀÌµ¿ 
-		combination(s, b, answer, n, m, check, idx+1, dep+1);
-		combination(s, b, answer, n, m, check, idx+1, dep);
+		//ë‹¤ìŒ ë‹¨ê³„ë¡œ ì´ë™ 
+		combination(s, b, answer, n, m, idx+1, dep+1);
+		combination(s, b, answer, n, m, idx+1, dep);
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -61,9 +61,8 @@ public class BOJ_2961 {
 		int N = Integer.parseInt(br.readLine());
 		int[] sour = new int[N];
 		int[] bitter = new int[N];
-		int[] answer = new int[N];	// ¼±ÅÃÇÑ Àç·áÀÇ ÀÎµ¦½º ³Ö´Â ¹è¿­, -1·Î ÃÊ±âÈ­ 
+		int[] answer = new int[N];	// ì„ íƒí•œ ì¬ë£Œì˜ ì¸ë±ìŠ¤ ë„£ëŠ” ë°°ì—´, -1ë¡œ ì´ˆê¸°í™” 
 		Arrays.fill(answer, -1);
-		boolean[] check = new boolean[N];		// ¹æ¹® ¿©ºÎ ÀúÀå
 		
 		for(int i = 0; i < N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
@@ -74,7 +73,7 @@ public class BOJ_2961 {
 		}
 		
 		for(int i = 1; i <= N; i++) {
-			combination(sour, bitter, answer, N, i, check, 0, 0);		//N°³ Áß i°³ »Ì±â
+			combination(sour, bitter, answer, N, i, 0, 0);		//Nê°œ ì¤‘ iê°œ ë½‘ê¸°
 		}
 		
 		System.out.println(min_diff);
