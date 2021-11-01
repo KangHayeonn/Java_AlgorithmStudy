@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 
@@ -77,7 +79,7 @@ class heapImp2<E>{      //지난번 구현해둔 힙 재탕!
 public class BOJ2493 {
 
     public static void main(String[] args) throws Exception {
-
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));//선언
         int N  , answer[] , minheight ;
 
         int[] tower;
@@ -112,7 +114,9 @@ public class BOJ2493 {
             }
         }
         for (int i=0;i<N;i++){
-            System.out.print(answer[i]+" ");
+            bw.write(answer[i]+" ");
         }
+        bw.flush();
+        bw.close();
     }
 }
