@@ -70,8 +70,7 @@ public class BOJ3190 {
 
             if (x>=0&&x<N&&y>=0&&y<N){      //맵밖으로 나간게 아니라면
                 if(Map[x][y]==2){       //뱀의 꼬리를 밟으면 게임오버
-                    System.out.println(time);
-                    System.exit(0);
+                    break;
                 }else if(Map[x][y]==0){ //땅을 밟으면 현재 땅은 뱀이되고 뱀의 꼬리는 땅이된다.
 
                     coord cod = queue.poll();
